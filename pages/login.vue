@@ -8,5 +8,7 @@
 import { usePageStore } from "@/stores/page";
 
 const pageStore = usePageStore();
-pageStore.setPageTitle("DASHBOARD");
+pageStore.setPageTitle("LOGIN");
 </script>
+
+<style></style>
