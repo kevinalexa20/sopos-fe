@@ -36,4 +36,14 @@ export default defineNuxtConfig({
     classSuffix: "",
     storageKey: "nuxt-color-mode",
   },
+  app: {
+    head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Rakkas&display=swap",
+        },
+      ],
+    },
+  },
 });

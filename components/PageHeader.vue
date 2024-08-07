@@ -1,5 +1,5 @@
 <template>
-  <div class="flex gap-4 flex-row sm:flex-row">
+  <div class="flex gap-4 flex-row sm:flex-row bg">
     <div
       class="min-h-[50px] rounded-lg text-2xl flex-1 flex items-center justify-start">
       {{ pageStore.pageTitle }}
