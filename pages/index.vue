@@ -3,8 +3,12 @@
     <PageHeader />
 
     <!-- Greeting Employee -->
-
-    <div class="my-5 font-rakkas text-5xl">Hi, Kuys.</div>
+    <div class="flex justify-between">
+      <div class="my-5 font-rakkas text-5xl">Hi, Kuys.</div>
+      <div class="my-5">
+        <Button size="lg" @click="handleLogout">Logout</Button>
+      </div>
+    </div>
 
     <div class="my-5">Order Monitoring</div>
     <!-- Grid about order monitoring -->
@@ -55,10 +59,24 @@
 
 <script setup lang="ts">
 import { usePageStore } from "@/stores/page";
+import { RefreshCcw } from "lucide-vue-next";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "vue-router";
+import { useAuth } from "@/composables/useAuth";
 
 const pageStore = usePageStore();
 pageStore.setPageTitle("DASHBOARD");
 
-import { RefreshCcw } from "lucide-vue-next";
-import { Button } from "@/components/ui/button";
+const { logout } = useAuth();
+const router = useRouter();
+
+const handleLogout = async () => {
+  try {
+    await logout();
+    router.push("/login"); // Redirect ke halaman login setelah logout
+  } catch (error) {
+    console.error("Logout failed:", error);
+    // Tambahkan logika untuk menampilkan pesan error kepada pengguna jika diperlukan
+  }
+};
 </script>

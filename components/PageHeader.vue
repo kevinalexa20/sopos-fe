@@ -16,7 +16,8 @@ import { usePageStore } from "@/stores/page";
 import { storeToRefs } from "pinia";
 
 const pageStore = usePageStore();
-const { pageTitle }: storeToRefs<ReturnType<typeof usePageStore>> = pageStore;
+// const { pageTitle }: storeToRefs<ReturnType<typeof usePageStore>> = pageStore;
+const { pageTitle } = storeToRefs(pageStore);
 </script>
 
 <style></style>
