@@ -8,7 +8,8 @@
       :key="employee.id"
       class="my-2 rounded-md border px-4 py-3 text-sm cursor-pointer"
       @click="selectEmployee(employee)">
-      {{ employee.email || "No Email" }}
+      <!-- {{ employee.email || "No Email" }} -->
+      {{ employee.firstName }} {{ employee.lastName }}
     </div>
 
     <div v-if="selectedEmployee" class="mt-5">
@@ -85,10 +86,24 @@ const handleLogin = async () => {
   error.value = ""; // Reset error message
 
   try {
-    await login({
+    // await login({
+    //   email: selectedEmployee.value.email,
+    //   password: password.value,
+    // });
+    const response = await login({
       email: selectedEmployee.value.email,
       password: password.value,
     });
+
+    console.log("Login response:", response);
+
+    // Simpan data pegawai di Pinia store
+    const authStore = useAuthStore();
+    authStore.setEmployee(response); // Simpan seluruh data pegawai di store
+
+    //save email employee to localStorage
+    // localStorage.setItem("loggedInEmployeeEmail", selectedEmployee.value.email);
+
     router.push("/"); // Redirect to dashboard after successful login
   } catch (err) {
     console.error("Login failed:", err);

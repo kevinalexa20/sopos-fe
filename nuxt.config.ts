@@ -3,6 +3,7 @@ import { defineNuxtConfig } from "nuxt/config";
 import { fileURLToPath } from "url";
 
 export default defineNuxtConfig({
+  plugins: ["~/plugins/authentication.ts"],
   alias: {
     "@": fileURLToPath(new URL("./", import.meta.url)),
   },
